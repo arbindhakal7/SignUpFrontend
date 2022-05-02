@@ -1,64 +1,100 @@
 import React, { Component } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+
 class App extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-      fullname: '',
-      username: '',
-      email: '',
-      password: ''
-    }
+      fullname: "",
+      username: "",
+      email: "",
+      password: "",
+    };
 
-    this.changeFullName = this.changeFullName.bind(this)
-    this.changeUserName = this.changeUserName.bind(this)
-    this.changeEmail = this.changeEmail.bind(this)
-    this.changePassword = this.changePassword.bind(this)
+    this.changeFullName = this.changeFullName.bind(this);
+    this.changeUserName = this.changeUserName.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changePassword = this.changePassword.bind(this);
   }
 
-  changeFullName(event){
+  changeFullName(event) {
     this.setState({
-      fullname: event.target.value
-    })
+      fullname: event.target.value,
+    });
   }
 
-  changeUserName(event){
+  changeUserName(event) {
     this.setState({
-      username: event.target.value
-    })
+      username: event.target.value,
+    });
   }
 
-  changeEmail(event){
+  changeEmail(event) {
     this.setState({
-      email: event.target.value
-    })
+      email: event.target.value,
+    });
   }
 
-  changePassword(event){
+  changePassword(event) {
     this.setState({
-      password: event.target.value
-    })
+      password: event.target.value,
+    });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    const registered = {
+      fullname: this.state.fullname,
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+    };
   }
 
   render() {
-    return( 
+    return (
       <div>
         <div className="container">
           <div className="form-div">
             <form>
-              <input type= 'text' placeholder="Full Name" onchange = {this.changeFullName} 
-              value={this.state.fullname} className='form=control form-group'/>
+              <input
+                type="text"
+                placeholder="Full Name"
+                onchange={this.changeFullName}
+                value={this.state.fullname}
+                className="form=control form-group"
+              />
 
-              <input type= 'text' placeholder="User Name" onchange = {this.changeUserName} 
-              value={this.state.username} className='form=control form-group'/>
+              <input
+                type="text"
+                placeholder="Username"
+                onchange={this.changeUserName}
+                value={this.state.username}
+                className="form=control form-group"
+              />
 
-              <input type= 'text' placeholder="Email" onchange = {this.changeEmail} 
-              value={this.state.email} className='form=control form-group'/>
+              <input
+                type="text"
+                placeholder="Email"
+                onchange={this.changeEmail}
+                value={this.state.email}
+                className="form=control form-group"
+              />
 
-              <input type= 'text' placeholder="Password" onchange = {this.changePassword} 
-              value={this.state.password} className='form=control form-group'/>
+              <input
+                type="text"
+                placeholder="Password"
+                onchange={this.changePassword}
+                value={this.state.password}
+                className="form=control form-group"
+              />
 
-              <input type = 'submit' className="btn btn-danger btn-block" value='Submit' />
+              <input
+                type="submit"
+                className="btn btn-danger btn-block"
+                value="Submit"
+              />
             </form>
           </div>
         </div>
