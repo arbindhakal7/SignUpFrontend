@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 class App extends Component {
   constructor() {
@@ -49,7 +50,18 @@ class App extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-    };
+    }
+
+    axios.post('http://localhost:5000/app/signup', registered)
+    .then(res => {
+      console.log(res.data)
+    })
+    this.setState({
+      fullname:'',
+      email:'',
+      username:'',
+      password:''
+    })
   }
 
   render() {
@@ -58,43 +70,49 @@ class App extends Component {
         <div className="container">
           <div className="form-div">
             <form>
-              <input
-                type="text"
-                placeholder="Full Name"
-                onchange={this.changeFullName}
-                value={this.state.fullname}
-                className="form=control form-group"
-              />
-
-              <input
-                type="text"
-                placeholder="Username"
-                onchange={this.changeUserName}
-                value={this.state.username}
-                className="form=control form-group"
-              />
-
-              <input
-                type="text"
-                placeholder="Email"
-                onchange={this.changeEmail}
-                value={this.state.email}
-                className="form=control form-group"
-              />
-
-              <input
-                type="text"
-                placeholder="Password"
-                onchange={this.changePassword}
-                value={this.state.password}
-                className="form=control form-group"
-              />
-
-              <input
-                type="submit"
-                className="btn btn-danger btn-block"
-                value="Submit"
-              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  onchange={this.changeFullName}
+                  value={this.state.fullname}
+                  className="form=control form-group"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Username"
+                  onchange={this.changeUserName}
+                  value={this.state.username}
+                  className="form=control form-group"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  onchange={this.changeEmail}
+                  value={this.state.email}
+                  className="form=control form-group"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Password"
+                  onchange={this.changePassword}
+                  value={this.state.password}
+                  className="form=control form-group"
+                />
+              </div>
+              <div>
+                <input
+                  type="submit"
+                  className="btn btn-danger btn-block"
+                  value="Submit"
+                />
+              </div>
             </form>
           </div>
         </div>
