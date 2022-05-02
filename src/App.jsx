@@ -9,6 +9,11 @@ class App extends Component {
       email: '',
       password: ''
     }
+
+    this.changeFullName = this.changeFullName.bind(this)
+    this.changeUserName = this.changeUserName.bind(this)
+    this.changeEmail = this.changeEmail.bind(this)
+    this.changePassword = this.changePassword.bind(this)
   }
 
   changeFullName(event){
@@ -23,7 +28,7 @@ class App extends Component {
     })
   }
 
-  changeEMAIL(event){
+  changeEmail(event){
     this.setState({
       email: event.target.value
     })
