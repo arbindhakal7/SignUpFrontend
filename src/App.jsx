@@ -11,11 +11,11 @@ class App extends Component {
       email: "",
       password: "",
     };
-
     this.changeFullName = this.changeFullName.bind(this);
     this.changeUserName = this.changeUserName.bind(this);
     this.changeEmail = this.changeEmail.bind(this);
     this.changePassword = this.changePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   changeFullName(event) {
@@ -50,67 +50,75 @@ class App extends Component {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-    }
+    };
 
-    axios.post('http://localhost:5000/app/signup', registered)
-    .then(res => {
-      console.log(res.data)
-    })
+    axios.post("http://localhost:5000/app/signup", registered).then((res) => {
+      console.log(res.data);
+    });
     this.setState({
-      fullname:'',
-      email:'',
-      username:'',
-      password:''
-    })
+      fullname: "",
+      email: "",
+      username: "",
+      password: "",
+    });
   }
 
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="form-div">
-            <form>
-              <div>
+        <div className="section-1-container section-container">
+          <div className="container">
+            <form onSubmit={this.onSubmit}>
+              <div class="col-md-6">
+                <label class="form-label" />
                 <input
                   type="text"
                   placeholder="Full Name"
-                  onchange={this.changeFullName}
+                  class="form-control"
                   value={this.state.fullname}
-                  className="form=control form-group"
+                  onChange={this.changeFullName}
+                  id="fullname"
                 />
               </div>
-              <div>
+              <div class="col-md-6">
+                <label for="inputUsername" class="form-label" />
                 <input
                   type="text"
                   placeholder="Username"
-                  onchange={this.changeUserName}
+                  class="form-control"
                   value={this.state.username}
-                  className="form=control form-group"
+                  onChange={this.changeUserName}
+                  id="username"
                 />
               </div>
-              <div>
+              <div class="col-md-6">
+                <label for="inputEmail" class="form-label" />
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
-                  onchange={this.changeEmail}
+                  class="form-control"
                   value={this.state.email}
-                  className="form=control form-group"
+                  onChange={this.changeEmail}
+                  id="email"
                 />
               </div>
-              <div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label" />
                 <input
-                  type="text"
-                  placeholder="Password"
-                  onchange={this.changePassword}
+                  type="password"
                   value={this.state.password}
-                  className="form=control form-group"
+                  onChange={this.changePassword}
+                  placeholder="Password"
+                  class="form-control"
+                  id="password"
                 />
               </div>
               <div>
+                <br></br>
                 <input
                   type="submit"
                   className="btn btn-danger btn-block"
-                  value="Submit"
+                  value="Submit" 
                 />
               </div>
             </form>
@@ -120,5 +128,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
