@@ -10,6 +10,31 @@ class App extends Component {
       password: ''
     }
   }
+
+  changeFullName(event){
+    this.setState({
+      fullname: event.target.value
+    })
+  }
+
+  changeUserName(event){
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  changeEMAIL(event){
+    this.setState({
+      email: event.target.value
+    })
+  }
+
+  changePassword(event){
+    this.setState({
+      password: event.target.value
+    })
+  }
+
   render() {
     return( 
       <div>
@@ -27,6 +52,8 @@ class App extends Component {
 
               <input type= 'text' placeholder="Password" onchange = {this.changePassword} 
               value={this.state.password} className='form=control form-group'/>
+
+              <input type = 'submit' className="btn btn-danger btn-block" value='Submit' />
             </form>
           </div>
         </div>
